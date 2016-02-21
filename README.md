@@ -5,11 +5,12 @@ Instructions:
 
 1) First run the NSIS_and_plugins_install_RUN_AS_ADMIN.bat file. It will first start the install of the NSIS application. Choose the defaults during install. Next run the script again (make sure to run as Admin) and it will transfer the necessary plugins for NSIS.
 
-2) Once the install has finished you'll need to set your default download location for your browser (by default the script chooses C:\Users\%USER%\Downloads - you can change the selection by editing this variable: VPNconfigDownloadFolder)
+2) Once the install has finished you'll need to set your default download location for your browser (by default the script chooses C:\Users\[username]\Downloads - you can change the selection by editing this variable: VPNconfigDownloadFolder. For example if you want to choose the Desktop folder change line 5 to look like:
+SET VPNconfigDownloadFolder=%USERPROFILE%\Desktop)
 
 3) Next download all the Pritunl .tar VPN config files you want to process. 
 
-4) Start the VPN_installer_creation_script.bat script and it will generate the .exe and .ovpn file in the current working directory (it will also copy the .exe, .ovpn. and .tar file to the archived_installers_configs folder)
+4) Start the VPN_installer_creation_script.bat script and it will automatically find and generate the .exe and .ovpn file in the current working directory (it will also copy the .exe, .ovpn. and .tar file to the archived_installers_configs folder)
 
-5) The VPN_installer_creation_script.bat can be consecutively and it will look for the .tar files until it doesn't find any more in the Downloads directory
+5) The VPN_installer_creation_script.bat can be run consecutively and it will look for the .tar files until it doesn't find any more in the Downloads directory
 
