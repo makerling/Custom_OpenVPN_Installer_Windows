@@ -19,7 +19,7 @@ IF EXIST %VPNconfigDownloadFolder%\*.tar (
 	ECHO.
 	ECHO Checking to see if "%VPNConfigtarFile%" is a valid OpenVPN config file...
 	:IF test to verify if tar file is really a VPN config file (had to Setlocal EnableDelayedExpansion - in order to make the VPNConfigtarFile variable expand
-	%SevenZipFolder%\tar.exe -tf "%VPNconfigDownloadFolder%\%VPNConfigtarFile%" | findstr ovpn
+	"%SevenZipFolder%\tar.exe" -tf "%VPNconfigDownloadFolder%\%VPNConfigtarFile%" | findstr ovpn
 	IF %errorlevel% EQU 0 ( 
 		ECHO ...Yes! it is a valid OpenVPN config file
 		ECHO.
@@ -35,7 +35,7 @@ IF EXIST %VPNconfigDownloadFolder%\*.tar (
 		:Untar (Unzip) VPN config file using 7z 
 		ECHO.
 		ECHO Extracting VPN configuration from .tar file...
-		%SevenZipFolder%\tar.exe -xvf "%VPNConfigtarFile%" 
+		"%SevenZipFolder%\tar.exe" -xvf "%VPNConfigtarFile%" 
 		ECHO ...was successfully extracted.
 		:Find last created .ovpn file in working directory and turn into variable %NewestovpnFile%
 		FOR /F "delims=|" %%I IN ('DIR "*.ovpn" /B /O:D') DO SET NewestovpnFile=%%I
@@ -72,6 +72,7 @@ IF EXIST %VPNconfigDownloadFolder%\*.tar (
 		:Cleaning up
 		IF EXIST "%~dp0%VPNConfigtarFile%" DEL "%~dp0%VPNConfigtarFile%"
 		ECHO.
+		goto :end
 	) ELSE (
 		ECHO tar file is not a VPN config file, aborting...
 		goto :end
