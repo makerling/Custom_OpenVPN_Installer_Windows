@@ -20,6 +20,6 @@ Features:
 
 The script uncompresses the Pritunl ovpn configuration from the .tar file. Then it embeds that config into the base OpenVPN installer. The script is configured to create a personalized VPN installer that will determine the client's architecture and install the appropriate OpenVPN executable (x86 or AMD64). 
 
-The script generates an installer for the client which is mostly silent. It will create a customized 'Start VPN' shortcut on the desktop set to run the user's configuration file. The shortcut needs to have admin privileges in order to run OpenVPN as admin. 
+The script generates an installer for the client which is mostly silent. It will create a customized 'Start VPN' shortcut on the desktop set to run the user's configuration file. The shortcut needs to have admin privileges in order to run OpenVPN properly. 
 
 
